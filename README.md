@@ -20,7 +20,18 @@ To run this demo call network_estimation_demo.m.  The demo begins by pruning the
 
 After the pruning, we are left with matrices X and Z of dimension 9 by 918.  We break these matrices into a training period of 600 week and a testing period of 318 weeks.  Using the partially observed data Z_train, we learn a network A_hat_75 using our method which accounts for the missing data, as well as a network A_hat_1 using a naive method which ignores missing data.
 
-Finally, the demo compare the log-likelihood of events during the test period for both of these networks.
+Finally, the demo compare the log-likelihood of events during the test period for both of these networks.  Running the demo with the default paramters yields
+
+```bash
+>> network_estimation_demo()
+Estimating networks... 
+Likelihood on complete data test set using A_hat_75 (adjusting for missing data):  -1.8386e+03
+
+Likelihood on complete data test set using A_hat_1 (ignoring missing data):  -1.9254e+03
+
+
+```
+
 
 By changing the parameters at the beginning of the file, you can compare the two estimation procedures with different community areas, discretization periods or crime types.  
 
