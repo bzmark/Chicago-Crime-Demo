@@ -53,4 +53,9 @@ Actual number of test period murders:        1035
 
 As a simple method of correcting for this, we increase the predictions from A_hat_1 by 4/3.  By doing this, we ensure that both predictions yield the same average number of homicides, so differences in performance between the proposed and naive estimator are not due to a simple difference in averages, but rather because the proposed method is capturing the underlying dynamics of the system.  The demo concludes by comparing the predictions of the two networks with the actual and observed events (after Gaussian smoothing used for visualization).  Since it does not account for the missing data (except via a uniform scaling factor), the network A_hat_1 is not able to capture the dynamics of the process and so it cannot predict events with as much precision as A_hat_75. 
 
+<img src='Images/prediction_demo.png'>
+
+
+In order to repeat this experiment for a different data set, change the first line of prediction_demo.m so that it loads the new networks and test set instead.
+
 
