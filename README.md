@@ -18,8 +18,20 @@ The matrix shootings_X contains records of aggravated batteries with handguns br
 
 To run this demo call network_estimation_demo.m.  The demo begins by pruning the homicide data so that it contain only homicides from the nine community areas which recorded at least 300 homicides during the period.  The majority of community areas experience a small number of murders which makes it more challenging to learn an influence network included all the areas.
 
-After the pruning, we are left with matrices X and Z of dimension 9 by 918.  We break these matrices into a training period of 600 week and a testing period of 318 weeks.  Using the partially observed data Z_train, we learn a network A_hat_adjusted using our method which accounts for the missing data, as well as a network A_hat_unadjusted using a naive method which ignores missing data.
+After the pruning, we are left with matrices X and Z of dimension 9 by 918.  We break these matrices into a training period of 600 week and a testing period of 318 weeks.  Using the partially observed data Z_train, we learn a network A_hat_75 using our method which accounts for the missing data, as well as a network A_hat_1 using a naive method which ignores missing data.
 
-Finally, the demo compare the log-likelihood of events during the test period for both of these networks.  
+Finally, the demo compare the log-likelihood of events during the test period for both of these networks.
+
+By changing the parameters at the beginning of the file, you can compare the two estimation procedures with different community areas, discretization periods or crime types.  
+
+## Stochastic Filtering Demo
+
+Given a network A and partially observed events Z_1,…,Z_n we can use density propagation to predict the likelihood of a true event at time n+1.  We do this for both A_hat_75 and A_hat_1 from the network estimation demo using the partially observed test data Z_test.
+
+As expected, A_hat_1 predicts an unreasonably low number of murders.
+
+As a simple method of correcting for this, we increase the predictions from A_hat_1 by 4/3.  
+By doing this, we ensure that both predictions yield the same average number of homicides, so differences in performance between the proposed and naive estimator are not due to a simple difference in averages, but rather because the proposed method is capturing the underlying dynamics of the system. 
+The demo concludes by comparing the predictions of the two networks with the actual and observed events (after Gaussian smoothing used for visualization).  Since it does not account for the missing data (except via a uniform scaling factor), the network A_hat_1 is not able to capture the dynamics of the process and so it cannot predict events with as much precision as A_hat_75. 
 
 
