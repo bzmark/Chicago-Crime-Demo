@@ -22,7 +22,7 @@ After the pruning, we are left with matrices X and Z of dimension 9 by 918.  We 
 
 Finally, the demo compare the log-likelihood of events during the test period for both of these networks.  Running the demo with the default paramters yields
 
-```bash
+```matlab
 >> network_estimation_demo()
 Estimating networks... 
 Likelihood on complete data test set using A_hat_75 (adjusting for missing data):  -1.8386e+03
@@ -40,6 +40,16 @@ By changing the parameters at the beginning of the file, you can compare the two
 Given a network A and partially observed events Z_1,…,Z_n we can use density propagation to predict the likelihood of a true event at time n+1.  We do this for both A_hat_75 and A_hat_1 from the network estimation demo using the partially observed test data Z_test.
 
 As expected, A_hat_1 predicts an unreasonably low number of murders.
+
+```matlab
+>> prediction_demo()
+Stochastic filtering... 
+Estimated test period murders using A_hat_75 (adjusting for missing data):        1011
+
+Estimated test period murders using A_hat_1(ignoring missing data):   777
+
+Actual number of test period murders:        1035
+```
 
 As a simple method of correcting for this, we increase the predictions from A_hat_1 by 4/3.  By doing this, we ensure that both predictions yield the same average number of homicides, so differences in performance between the proposed and naive estimator are not due to a simple difference in averages, but rather because the proposed method is capturing the underlying dynamics of the system.  The demo concludes by comparing the predictions of the two networks with the actual and observed events (after Gaussian smoothing used for visualization).  Since it does not account for the missing data (except via a uniform scaling factor), the network A_hat_1 is not able to capture the dynamics of the process and so it cannot predict events with as much precision as A_hat_75. 
 
