@@ -16,7 +16,11 @@ The matrix shootings_X contains records of aggravated batteries with handguns br
 
 ## Network Estimation Demo
 
-To run this demo call network_estimation_demo.m.  The demo begins by pruning the homicide data so that it contain only homicides from the nine community areas which recorded at least 300 homicides during the period.  The majority of community areas experience a small number of murders which makes it more challenging to learn an influence network included all the areas.
+To run this demo call network_estimation_demo.m.  The demo begins by examining the 'homicides_X' matrix.  In the figure below, a yellow line indicates the occurance of a homicide in a given community area during a certain week.
+
+<img src='Images/all_areas.png' width="750px">
+
+We see that the homicides are clustered within a small number of high crime area.  The majority of community areas experience few homicides which makes it more challenging learn the influences for these nodes.  Instead, we prune the homicide data so that it contain only the nine community areas which recorded at least 300 homicides during the entire period. 
 
 After the pruning, we are left with matrices X and Z of dimension 9 by 918.  We break these matrices into a training period of 600 week and a testing period of 318 weeks.  Using the partially observed data Z_train, we learn a network A_hat_75 using our method which accounts for the missing data, as well as a network A_hat_1 using a naive method which ignores missing data.
 
