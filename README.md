@@ -4,7 +4,7 @@ This repository contains code developed for network estimation from partially ob
 
 We’re interested in network estimation in the following context: suppose we observe crimes which are each associated with a location (in this demo, we consider crimes in the city of Chicago broken down into 77 community areas).  Using the past observations, can we predict how a crime in one community area influences the likelihood of future crimes in other areas?
 
-Full technical details on the model formulation and algorithm used can be found here.  In short, we can reduce the problem to estimating an influence network which can be represented as a matrix of dimension 77 by 77.  The (i,j) entry of the matrix is a number which indicated how much a crime in community area j is likely to increase (or decrease if negative) the likelihood of a future crime in area i.  
+Full technical details on the model formulation and algorithm used can be found (here)[https://github.com/bzmark/Chicago-Crime-Demo/blob/master/Images/Details.pdf].  In short, we can reduce the problem to estimating an influence network which can be represented as a matrix of dimension 77 by 77.  The (i,j) entry of the matrix is a number which indicated how much a crime in community area j is likely to increase (or decrease if negative) the likelihood of a future crime in area i.  
 
 This type of problem has been studied in the past under an assumption that all crimes are observed.  Our algorithm accounts for the case where one records only a subset of crimes, such as reported crimes.  
 
