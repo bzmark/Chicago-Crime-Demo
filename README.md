@@ -1,10 +1,10 @@
 # Chicago-Crime-Demo
 
-This repository contains code developed for network estimation from partially observed events.  The code is explained via two demos: network_estimation_demo.m and stochastic_filtering.m.
+This repository contains code developed for network estimation from partially observed events.  The code is explained via two demos: network_estimation_demo.m and prediction_demo.m.
 
-We’re interested in network estimation in the following context: suppose we observe crimes which are each associated with a location (in the demo, we consider crimes in the city of Chicago broken down into 77 community areas).  Using past observations, can we predict how a crime in one community area influences the likelihood of future crimes in other areas?
+We’re interested in network estimation in the following context: suppose we observe crimes which are each associated with a location (in the demo, we consider crimes in the city of Chicago broken down into 77 community areas).  Using this data, we want to predict how a crime in one community area influences the likelihood of future crimes in other areas?
 
-Technical details on the model formulation and algorithm used can be found [here](https://github.com/bzmark/Chicago-Crime-Demo/blob/master/Images/Details.pdf).  Our goal is to estimate an influence network which can be represented as a matrix of dimension 77 by 77.  The (i,j) entry of the matrix is a number which indicated how much a crime in community area j is likely to increase or decrease the likelihood of a future crime in area i.  
+Technical details on the model formulation and algorithm used can be found [here](https://github.com/bzmark/Chicago-Crime-Demo/blob/master/Images/Details.pdf).  Our goal is to estimate an influence network which can be represented as a matrix of dimension 77 by 77.  The (i,j) entry of the matrix is a number which indicates how much a crime in community area j is likely to increase or decrease the likelihood of a future crime in area i.  
 
 This type of problem has been studied in the past under an assumption that all crimes are observed.  Our algorithm accounts for the case where one records only a subset of crimes, such as reported crimes. 
 
@@ -35,7 +35,7 @@ After the pruning, we are left with matrices X and Z of dimension 9 by 918.  We 
 We can compare the two methods by looking at the log-likelihood of events during the test period for both networks.  Running the demo with the default parameters yields
 
 ```matlab
->> network_estimation_demo()
+>> network_estimation_demo
 Estimating networks... 
 Likelihood on complete data test set using A_hat_75 (adjusting for missing data):  -1.8386e+03
 
@@ -45,7 +45,7 @@ Likelihood on complete data test set using A_hat_1 (ignoring missing data):  -1.
 ```
 
 
-By changing the parameters at the beginning of the file, you can compare the two estimation procedures with different community areas, discretization periods or crime types.  
+By changing the parameters at the beginning of the file, you can compare the two estimation procedures for different community areas, discretization periods or crime types.  
 
 ## Stochastic Filtering
 
@@ -54,7 +54,7 @@ To run this demo call prediction_demo.m.  Given a network A and partially observ
 As expected, A_hat_1 predicts an unreasonably low number of murders.
 
 ```matlab
->> prediction_demo()
+>> prediction_demo
 Stochastic filtering... 
 Estimated test period murders using A_hat_75 (adjusting for missing data):        1011
 
