@@ -2,9 +2,9 @@
 
 This repository contains code developed for network estimation from partially observed events.  The code is explained via two demos: network_estimation_demo.m and prediction_demo.m.
 
-We’re interested in network estimation in the following context: suppose we observe crimes which are each associated with a location (in the demo, we consider crimes in the city of Chicago broken down into 77 community areas).  Using this data, we want to predict how a crime in one community area influences the likelihood of future crimes in other areas?
+We’re interested in network estimation in the following context: suppose we observe crimes which are each associated with a location (in the demo, we consider crimes in the city of Chicago broken down into 77 community areas).  Using this data, we want to predict how a crime in one community area influences the likelihood of future crimes in other areas.
 
-Technical details on the model formulation and algorithm used can be found [here](https://github.com/bzmark/Chicago-Crime-Demo/blob/master/Images/Details.pdf).  Our goal is to estimate an influence network which can be represented as a matrix of dimension 77 by 77.  The (i,j) entry of the matrix is a number which indicates how much a crime in community area j is likely to increase or decrease the likelihood of a future crime in area i.  
+Technical details on the model formulation and algorithm used can be found [here](https://github.com/bzmark/Chicago-Crime-Demo/blob/master/Images/Details.pdf).  A more complete discussion and analysis of our algorithms is provided in [this paper](http://arxiv.org/abs/1811.02979).  The goal of our method is to estimate an influence network which can be represented as a matrix of dimension 77 by 77.  The (i,j) entry of the matrix is a number which indicates how much a crime in community area j is likely to increase or decrease the likelihood of a future crime in area i.  
 
 This type of problem has been studied in the past under an assumption that all crimes are observed.  Our algorithm accounts for the case where one records only a subset of crimes, such as reported crimes. 
 
